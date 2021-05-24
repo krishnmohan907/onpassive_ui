@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-md-6">
+    <form class="form-horizontal" #myForm="ngForm">
+      <fieldset>
+        <!-- Form Name -->
+        <legend style="color: blue;">Create Employee</legend>
+
+        <!-- Text input -->
+
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="firstname">
+            Full Name
+          </label>
+          <div class="col-md-6">
+            <input id="firstname" name="firstname" type="text" [(ngModel)]="fullname" placeholder="Enter Full Name"
+              class="form-control input-md" #fullnames="ngModel" autocomplete="off" required>
+          </div>
+          <span *ngIf="fullnames.invalid && (fullnames.dirty || fullnames.touched)"
+            style="color: maroon;font-size: 1rem;">
+            <span *ngIf="fullnames.errors?.required">Full name is required.</span>
+          </span>
+        </div>
+        <!-- Text input -->
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Job Tiltes">
+            Job Title
+          </label>
+          <div class="col-md-6">
+            <input id="Job Tiltes" name="Job Tiltes" type="text" [(ngModel)]="jobtitle" placeholder="Enter Job Title"
+              class="form-control input-md" #jobtitles="ngModel" autocomplete="off" required>
+          </div>
+          <span *ngIf="jobtitles.invalid && (jobtitles.dirty || jobtitles.touched)"
+            style="color: maroon;font-size: 1rem;">
+            <span *ngIf="jobtitles.errors?.required">Job Title is required.</span>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Depear">
+            Department
+          </label>
+          <div class="col-md-6">
+            <input id="Depear" name="Depear" type="text" [(ngModel)]="Depertement" placeholder="Enter Department"
+              class="form-control input-md" #departements="ngModel" autocomplete="off" required>
+          </div>
+          <span *ngIf="departements.invalid && (departements.dirty || departements.touched)"
+            style="color: maroon;font-size: 1rem;">
+            <span *ngIf="departements.errors?.required">Depertements is required.</span>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Location">
+            Location
+          </label>
+          <div class="col-md-6">
+            <input id="Location" name="Location" type="text" [(ngModel)]="Location" placeholder="Enter Location"
+              class="form-control input-md" #locations="ngModel" autocomplete="off" required>
+          </div>
+          <span *ngIf="locations.invalid && (locations.dirty || locations.touched)"
+            style="color: maroon;font-size: 1rem;">
+            <span *ngIf="locations.errors?.required">Location is required.</span>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Age">
+            Age
+          </label>
+          <div class="col-md-6">
+            <input id="Age" name="Age" type="text" [(ngModel)]="age" placeholder="Enter age"
+              class="form-control input-md" #ages="ngModel" autocomplete="off" required>
+          </div>
+          <span *ngIf="ages.invalid && (ages.dirty || ages.touched)" style="color: maroon;font-size: 1rem;">
+            <span *ngIf="ages.errors?.required">Age is required.</span>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="Salary">
+            Salary
+          </label>
+          <div class="col-md-6">
+            <input id="Salary" name="Salary" type="text" [(ngModel)]="salary" placeholder="Enter Salary"
+              class="form-control input-md" #salarys="ngModel" autocomplete="off" required>
+          </div>
+          <span *ngIf="salarys.invalid && (salarys.dirty || salarys.touched)" style="color: maroon;font-size: 1rem;">
+            <span *ngIf="salarys.errors?.required">Salary is required.</span>
+          </span>
+        </div>
+      </fieldset>
+    </form>
+    <button (click)="submitlogin(myForm)" [disabled]="!myForm.valid"  class="btn btn-primary">
+      Submit
+    </button>
+  </div>
+  <br>
+  <div>
+    <div class="row">
+      <div class="col-md-6"></div>
+    </div>
+  </div>
+</div>
+
+

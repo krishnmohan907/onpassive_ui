@@ -1,0 +1,169 @@
+<div class="container">
+  <div class="row col-md-12 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Job Title</th>
+          <th>Departement</th>
+          <th>Location</th>
+          <th>Age</th>
+          <th>Salary</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of finalemployeedata;let i=index">
+          <td>{{i+1}}</td>
+          <td>{{item.Full_name}}</td>
+          <td>{{item.job_Title}}</td>
+          <td>{{item.Departement}}</td>
+          <td>{{item.Location}}</td>
+          <td>{{item.Age}}</td>
+          <td>{{item.Salary}}</td>
+          <td class="text-center">
+            <a class='btn btn-info btn-xs' data-toggle="modal" data-target="#myModal" (click)="edit(item)">
+              <span class="glyphicon glyphicon-edit"></span>
+              Edit
+            </a>
+            <a class="btn btn-danger btn-xs" (click)="delete(item)">
+              <span class="glyphicon glyphicon-remove"></span>
+              Del
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="col-md-12">
+        <form class="form-horizontal" #myForm="ngForm">
+          <fieldset>
+            <div class="row">
+              <!-- Form Name -->
+              <legend style="color: blue;">Create Employee</legend>
+
+              <!-- Text input -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class=" control-label" for="firstname">
+                    Full Name
+                  </label>
+                  <div class>
+                    <input id="firstname" name="firstname" type="text" [(ngModel)]="editfullname"
+                      placeholder="Enter Full Name" class="form-control input-md" #fullnames="ngModel"
+                      autocomplete="off" required>
+                  </div>
+                  <span *ngIf="fullnames.invalid && (fullnames.dirty || fullnames.touched)"
+                    style="color: maroon;font-size: 1rem;">
+                    <span *ngIf="fullnames.errors?.required">Full name is required.</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Text input -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label" for="Job Tiltes">
+                    Job Title
+                  </label>
+                  <div>
+                    <input id="Job Tiltes" name="Job Tiltes" type="text" [(ngModel)]="editjobtitle"
+                      placeholder="Enter Job Title" class="form-control input-md" #jobtitles="ngModel"
+                      autocomplete="off" required>
+                  </div>
+                  <span *ngIf="jobtitles.invalid && (jobtitles.dirty || jobtitles.touched)"
+                    style="color: maroon;font-size: 1rem;">
+                    <span *ngIf="jobtitles.errors?.required">Job Title is required.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label" for="Depear">
+                    Department
+                  </label>
+                  <div>
+                    <input id="Depear" name="Depear" type="text" [(ngModel)]="editdepertamanet"
+                      placeholder="Enter Department" class="form-control input-md" #departements="ngModel"
+                      autocomplete="off" required>
+                  </div>
+                  <span *ngIf="departements.invalid && (departements.dirty || departements.touched)"
+                    style="color: maroon;font-size: 1rem;">
+                    <span *ngIf="departements.errors?.required">Depertements is required.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label" for="Location">
+                    Location
+                  </label>
+                  <div>
+                    <input id="Location" name="Location" type="text" [(ngModel)]="editlocation"
+                      placeholder="Enter Location" class="form-control input-md" #locations="ngModel" autocomplete="off"
+                      required>
+                  </div>
+                  <span *ngIf="locations.invalid && (locations.dirty || locations.touched)"
+                    style="color: maroon;font-size: 1rem;">
+                    <span *ngIf="locations.errors?.required">Location is required.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label" for="Age">
+                    Age
+                  </label>
+                  <div>
+                    <input id="Age" name="Age" type="text" [(ngModel)]="editage" placeholder="Enter age"
+                      class="form-control input-md" #ages="ngModel" autocomplete="off" required>
+                  </div>
+                  <span *ngIf="ages.invalid && (ages.dirty || ages.touched)" style="color: maroon;font-size: 1rem;">
+                    <span *ngIf="ages.errors?.required">Age is required.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label" for="Salary">
+                    Salary
+                  </label>
+                  <div>
+                    <input id="Salary" name="Salary" type="text" [(ngModel)]="editsalary" placeholder="Enter Salary"
+                      class="form-control input-md" #salarys="ngModel" autocomplete="off" required>
+                  </div>
+                  <span *ngIf="salarys.invalid && (salarys.dirty || salarys.touched)"
+                    style="color: maroon;font-size: 1rem;">
+                    <span *ngIf="salarys.errors?.required">Salary is required.</span>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+        </form>
+        <button (click)="submitlogin(myForm)" [disabled]="!myForm.valid"  class="btn btn-primary">
+          Submit
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
